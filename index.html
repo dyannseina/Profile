@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Giới thiệu</title>
+  <title>Giới thiệu bản thân</title>
   <style>
     * {
       margin: 0;
@@ -32,12 +32,12 @@
     .container {
       position: relative;
       text-align: center;
-      padding: 100px 20px 40px;
+      padding: 80px 20px 40px;
     }
 
     .avatar {
-      width: 150px;
-      height: 150px;
+      width: 130px;
+      height: 130px;
       border-radius: 50%;
       border: 4px solid white;
       object-fit: cover;
@@ -46,7 +46,7 @@
     }
 
     h1 {
-      font-size: 2.5rem;
+      font-size: 2.2rem;
       margin-bottom: 10px;
       color: #fff;
       text-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff;
@@ -59,7 +59,7 @@
     }
 
     p {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       margin-bottom: 30px;
     }
 
@@ -67,8 +67,8 @@
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 20px;
-      margin-bottom: 50px;
+      gap: 15px;
+      margin-bottom: 40px;
     }
 
     .socials a {
@@ -88,14 +88,14 @@
     }
 
     .socials img {
-      width: 26px;
-      height: 26px;
+      width: 30px;
+      height: 30px;
       filter: drop-shadow(0 0 5px white);
       transition: 0.3s;
     }
 
     .socials img:hover {
-      filter: drop-shadow(0 0 8px #ffffff) brightness(1.2);
+      filter: drop-shadow(0 0 15px white) brightness(1.5);
     }
 
     .games {
@@ -103,7 +103,7 @@
     }
 
     .games h2 {
-      font-size: 2rem;
+      font-size: 1.8rem;
       margin-bottom: 20px;
       text-shadow: 0 0 10px #ff70c9, 0 0 20px #ff70c9;
     }
@@ -112,14 +112,14 @@
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 30px;
+      gap: 20px;
     }
 
     .game {
-      width: 200px;
+      width: 150px;
       background: rgba(255, 255, 255, 0.05);
-      border-radius: 15px;
-      padding: 10px;
+      border-radius: 12px;
+      padding: 8px;
       box-shadow: 0 0 10px #ffffff20;
       transition: 0.3s;
     }
@@ -131,21 +131,49 @@
 
     .game img {
       width: 100%;
-      border-radius: 10px;
-      margin-bottom: 10px;
+      border-radius: 8px;
+      margin-bottom: 8px;
     }
 
     .game-name {
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: bold;
       text-shadow: 0 0 5px white;
     }
 
     .ingame {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       color: #ccc;
-      margin-top: 5px;
+      margin-top: 4px;
       font-style: italic;
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      .avatar {
+        width: 100px;
+        height: 100px;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      .game {
+        width: 140px;
+      }
+
+      .game-name {
+        font-size: 0.95rem;
+      }
+
+      .ingame {
+        font-size: 0.8rem;
+      }
     }
   </style>
 </head>
@@ -155,7 +183,7 @@
     <img src="download.gif" alt="Avatar" class="avatar" />
     <h1>Hoàng Kim Duy An</h1>
     <div class="location">Ho Chi Minh City</div>
-    <p>Tớ là An(Seina), ở TP.HCM. Tớ người gốc Bắc nên có chửi hơi nhiều =))).</p>
+    <p>Tớ là An(Seina), đến từ Bảo Lộc, hiện tại đang ở TP.HCM. Tớ gốc Bắc nên có chửi hơi nhiều nên mn thông cảm =))</p>
 
     <div class="socials">
       <a href="https://facebook.com/dyann.seina26" target="_blank">
@@ -176,17 +204,17 @@
     </div>
 
     <div class="games">
-      <h2>🎮 Game</h2>
+      <h2>🎮Game</h2>
       <div class="game-list">
         <div class="game">
-          <img src="xemgame-logo-lien-quan-mobile-garena.jpg" alt="Liên Quân Mobile">
-          <div class="game-name">AOV</div>
+          <img src="xemgame-logo-lien-quan-mobile-garena.jpg">
+          <div class="game-name">Liên Quân Mobile</div>
           <div class="ingame">Ingame: _FurinSeina.Ϟ</div>
         </div>
         <div class="game">
           <img src="communityIcon_moukkgmt1rca1.png" alt="Genshin Impact">
           <div class="game-name">Genshin Impact</div>
-          <div class="ingame">👤 Ingame: 842578123</div>
+          <div class="ingame">UID: 842578123</div>
         </div>
       </div>
     </div>
