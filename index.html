@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Giới thiệu bản thân</title>
   <style>
     * {
@@ -15,18 +15,17 @@
       height: 100%;
       font-family: 'Segoe UI', sans-serif;
       color: white;
-      position: relative;
       overflow-x: hidden;
     }
 
     .background {
       background: url('jj.gif') no-repeat center center fixed;
       background-size: cover;
-      position: absolute;
+      position: fixed;
       height: 100%;
       width: 100%;
       z-index: -1;
-      filter: brightness(0.7);
+      transition: background-image 0.5s ease;
     }
 
     .container {
@@ -71,31 +70,16 @@
       margin-bottom: 40px;
     }
 
-    .socials a {
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-      color: #ffffff;
-      font-weight: bold;
-      font-size: 1rem;
-      transition: 0.3s;
-      gap: 8px;
-    }
-
-    .socials a:hover {
-      transform: scale(1.05);
-      filter: drop-shadow(0 0 5px white);
-    }
-
-    .socials img {
+    .socials a img.social-icon {
       width: 30px;
       height: 30px;
-      filter: drop-shadow(0 0 5px white);
-      transition: 0.3s;
+      filter: brightness(0) invert(1) drop-shadow(0 0 5px white);
+      transition: 0.4s ease;
     }
 
-    .socials img:hover {
-      filter: drop-shadow(0 0 15px white) brightness(1.5);
+    .socials a img.social-icon:hover {
+      filter: none;
+      transform: scale(1.1);
     }
 
     .games {
@@ -148,7 +132,25 @@
       font-style: italic;
     }
 
-    /* Responsive */
+    .toggle-button {
+      margin-top: 30px;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      padding: 10px 20px;
+      border: 2px solid white;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 0 10px white;
+    }
+
+    .toggle-button:hover {
+      background: white;
+      color: #000;
+      box-shadow: 0 0 20px white;
+    }
+
     @media (max-width: 480px) {
       .avatar {
         width: 100px;
@@ -157,10 +159,6 @@
 
       h1 {
         font-size: 1.8rem;
-      }
-
-      p {
-        font-size: 1rem;
       }
 
       .game {
@@ -178,46 +176,47 @@
   </style>
 </head>
 <body>
-  <div class="background"></div>
+  <div class="background" id="bg"></div>
   <div class="container">
     <img src="download.gif" alt="Avatar" class="avatar" />
     <h1>Hoàng Kim Duy An</h1>
     <div class="location">Ho Chi Minh City</div>
-    <p>Tớ là An(Seina), đến từ Bảo Lộc, hiện tại đang ở TP.HCM. Tớ gốc Bắc nên có chửi hơi nhiều nên mn thông cảm =))</p>
+    <p>Mình là An(Seina), đến từ Bảo Lộc. Mình là người gốc Bắc nên có chửi nhiều ấy</p>
 
     <div class="socials">
       <a href="https://facebook.com/dyann.seina26" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/145/145802.png" alt="Facebook"> Facebook
+        <img class="social-icon" src="https://cdn-icons-png.flaticon.com/512/145/145802.png" alt="Facebook" />
       </a>
       <a href="https://instagram.com/flw_.seina" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111465.png" alt="Instagram"> Instagram
+        <img class="social-icon" src="https://cdn-icons-png.flaticon.com/512/2111/2111465.png" alt="Instagram" />
       </a>
       <a href="https://tiktok.com/@seina.8192" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/3046/3046122.png" alt="TikTok"> TikTok
+        <img class="social-icon" src="https://cdn-icons-png.flaticon.com/512/3046/3046122.png" alt="TikTok" />
       </a>
       <a href="https://github.com/dyannseina" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub"> GitHub
+        <img class="social-icon" src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub" />
       </a>
-      <a href="https://www.youtube.com/@Sayu2313" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube"> YouTube
+      <a href="https://youtube.com/@Sayu2313" target="_blank">
+        <img class="social-icon" src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube" />
       </a>
     </div>
 
     <div class="games">
-      <h2>🎮Game</h2>
+      <h2>🎮 Game</h2>
       <div class="game-list">
         <div class="game">
-          <img src="xemgame-logo-lien-quan-mobile-garena.jpg">
+          <img src="xemgame-logo-lien-quan-mobile-garena.jpg" alt="Liên Quân Mobile" />
           <div class="game-name">Liên Quân Mobile</div>
           <div class="ingame">Ingame: _FurinSeina.Ϟ</div>
         </div>
         <div class="game">
-          <img src="communityIcon_moukkgmt1rca1.png" alt="Genshin Impact">
+          <img src="communityIcon_moukkgmt1rca1.png" alt="Genshin Impact" />
           <div class="game-name">Genshin Impact</div>
-          <div class="ingame">UID: 842578123</div>
+          <div class="ingame"> UID: 842578123</div>
         </div>
       </div>
     </div>
   </div>
+  </script>
 </body>
 </html>
