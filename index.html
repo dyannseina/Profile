@@ -34,14 +34,33 @@
       padding: 80px 20px 40px;
     }
 
+    /* Avatar viền động */
     .avatar {
       width: 130px;
       height: 130px;
       border-radius: 50%;
-      border: 4px solid white;
       object-fit: cover;
       margin-bottom: 20px;
-      box-shadow: 0 0 15px white;
+      position: relative;
+      z-index: 1;
+      animation: pulseGlow 2.5s infinite;
+      border: 4px solid transparent;
+      background-image: linear-gradient(white, white), 
+                        linear-gradient(120deg, #00f0ff, #ff00ff, #00f0ff);
+      background-origin: border-box;
+      background-clip: content-box, border-box;
+    }
+
+    @keyframes pulseGlow {
+      0% {
+        box-shadow: 0 0 10px #00f0ff, 0 0 20px #ff00ff;
+      }
+      50% {
+        box-shadow: 0 0 25px #ff00ff, 0 0 35px #00f0ff;
+      }
+      100% {
+        box-shadow: 0 0 10px #00f0ff, 0 0 20px #ff00ff;
+      }
     }
 
     h1 {
@@ -59,7 +78,7 @@
 
     p {
       font-size: 1.1rem;
-      margin-bottom: 30px;
+      margin-bottom: 10px;
     }
 
     .socials {
@@ -73,84 +92,146 @@
     .socials a img.social-icon {
       width: 30px;
       height: 30px;
-      filter: brightness(0) invert(1) drop-shadow(0 0 5px white);
       transition: 0.4s ease;
     }
 
     .socials a img.social-icon:hover {
-      filter: none;
       transform: scale(1.1);
     }
 
-    .games {
+    /* Hiệu ứng phát sáng theo từng nền tảng */
+    .socials a.facebook:hover img {
+      filter: drop-shadow(0 0 10px #1877f2) drop-shadow(0 0 20px #1877f2);
+    }
+
+    .socials a.instagram:hover img {
+      filter: drop-shadow(0 0 10px #e1306c) drop-shadow(0 0 20px #e1306c);
+    }
+
+    .socials a.tiktok:hover img {
+      filter: drop-shadow(0 0 10px #69c9d0) drop-shadow(0 0 20px #ee1d52);
+    }
+
+    .socials a.github:hover img {
+      filter: drop-shadow(0 0 10px #ffffff) drop-shadow(0 0 20px #999999);
+    }
+
+    .socials a.youtube:hover img {
+      filter: drop-shadow(0 0 10px #ff0000) drop-shadow(0 0 20px #ff0000);
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+
+    .tab-button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid white;
+      border-radius: 10px;
+      color: white;
+      transition: 0.3s;
+    }
+
+    .tab-button:hover {
+      background: white;
+      color: #000;
+    }
+
+    .tab-button.active {
+      background: #00f0ff;
+      color: black;
+      box-shadow: 0 0 10px #00f0ff;
+    }
+
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .active-tab {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Game + Bank styling */
+    .game img, .bank-logo {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 15px;
+      border-radius: 10px;
+      object-fit: cover;
+      box-shadow: 0 4px 10px rgba(0, 240, 255, 0.5);
+    }
+
+    .game-name, .bank-name {
+      font-size: 1.1rem;
+      color: #00f0ff;
+      margin-top: 10px;
+    }
+
+    .ingame, .bank-info {
+      font-size: 0.95rem;
+      color: #ddd;
+    }
+
+    .game, .bank {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 20px;
+      border-radius: 15px;
+      text-align: center;
+      width: 220px;
+      box-shadow: 0 4px 15px rgba(0, 240, 255, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .game:hover, .bank:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 30px rgba(0, 240, 255, 0.5);
+    }
+
+    .games, .banks {
       margin-top: 40px;
     }
 
-    .games h2 {
+    .games h2, .banks h2 {
       font-size: 1.8rem;
       margin-bottom: 20px;
       text-shadow: 0 0 10px #ff70c9, 0 0 20px #ff70c9;
     }
 
-    .game-list {
+    .game-list, .bank-list {
       display: flex;
       justify-content: center;
-      flex-wrap: wrap;
       gap: 20px;
+      flex-wrap: wrap;
     }
 
-    .game {
-      width: 150px;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 12px;
-      padding: 8px;
-      box-shadow: 0 0 10px #ffffff20;
-      transition: 0.3s;
+    .personal h2 {
+      font-size: 2rem;
+      text-shadow: 0 0 10px #ff70c9, 0 0 20px #ff70c9, 0 0 30px #ff70c9;
+      margin-bottom: 20px;
     }
 
-    .game:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px #ffffff40;
+    .personal {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(255, 112, 201, 0.3);
+      max-width: 500px;
+      margin: 0 auto;
     }
 
-    .game img {
-      width: 100%;
-      border-radius: 8px;
-      margin-bottom: 8px;
-    }
-
-    .game-name {
-      font-size: 1rem;
-      font-weight: bold;
-      text-shadow: 0 0 5px white;
-    }
-
-    .ingame {
-      font-size: 0.85rem;
-      color: #ccc;
-      margin-top: 4px;
-      font-style: italic;
-    }
-
-    .toggle-button {
-      margin-top: 30px;
-      background: rgba(255, 255, 255, 0.1);
-      color: white;
-      padding: 10px 20px;
-      border: 2px solid white;
-      border-radius: 10px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: 0.3s;
-      box-shadow: 0 0 10px white;
-    }
-
-    .toggle-button:hover {
-      background: white;
-      color: #000;
-      box-shadow: 0 0 20px white;
-    }
-
+    /* Responsive */
     @media (max-width: 480px) {
       .avatar {
         width: 100px;
@@ -161,16 +242,13 @@
         font-size: 1.8rem;
       }
 
-      .game {
-        width: 140px;
+      .game, .bank {
+        flex: 1 1 100%;
       }
 
-      .game-name {
-        font-size: 0.95rem;
-      }
-
-      .ingame {
-        font-size: 0.8rem;
+      .game img, .bank-logo {
+        width: 60px;
+        height: 60px;
       }
     }
   </style>
@@ -181,42 +259,95 @@
     <img src="download.gif" alt="Avatar" class="avatar" />
     <h1>Hoàng Kim Duy An</h1>
     <div class="location">Ho Chi Minh City</div>
-    <p>Mình là An(Seina), đến từ Bảo Lộc. Mình là người gốc Bắc nên có chửi nhiều ấy</p>
+    <p>Mình là An(Seina), đến từ Bảo Lộc. Mình là người gốc Bắc nên có chửi nhiều=))</p>
 
     <div class="socials">
-      <a href="https://facebook.com/dyann.seina26" target="_blank">
+      <a href="https://facebook.com/dyann.seina26" target="_blank" class="facebook">
         <img class="social-icon" src="https://cdn-icons-png.flaticon.com/512/145/145802.png" alt="Facebook" />
       </a>
-      <a href="https://instagram.com/flw_.seina" target="_blank">
+      <a href="https://instagram.com/flw_.seina" target="_blank" class="instagram">
         <img class="social-icon" src="https://cdn-icons-png.flaticon.com/512/2111/2111465.png" alt="Instagram" />
       </a>
-      <a href="https://tiktok.com/@seina.8192" target="_blank">
+      <a href="https://tiktok.com/@seina.8192" target="_blank" class="tiktok">
         <img class="social-icon" src="https://cdn-icons-png.flaticon.com/512/3046/3046122.png" alt="TikTok" />
       </a>
-      <a href="https://github.com/dyannseina" target="_blank">
+      <a href="https://github.com/dyannseina" target="_blank" class="github">
         <img class="social-icon" src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub" />
       </a>
-      <a href="https://youtube.com/@Sayu2313" target="_blank">
+      <a href="https://youtube.com/@Sayu2313" target="_blank" class="youtube">
         <img class="social-icon" src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube" />
       </a>
     </div>
 
-    <div class="games">
-      <h2>🎮 Game</h2>
-      <div class="game-list">
-        <div class="game">
-          <img src="xemgame-logo-lien-quan-mobile-garena.jpg" alt="Liên Quân Mobile" />
-          <div class="game-name">Liên Quân Mobile</div>
-          <div class="ingame">Ingame: _FurinSeina.Ϟ</div>
+    <div class="tabs">
+      <button class="tab-button active" onclick="showTab('personal')">Thông tin cá nhân</button>
+      <button class="tab-button" onclick="showTab('games')">Game</button>
+      <button class="tab-button" onclick="showTab('banks')">Ngân Hàng</button>
+    </div>
+
+    <div id="personal" class="tab-content active-tab">
+      <div class="personal">
+        <h2>Thông tin cá nhân</h2>
+        <p><strong>Họ tên:</strong> Hoàng Kim Duy An</p>
+        <p><strong>Sinh nhật:</strong> 15/07/2006</p>
+        <p><strong>Sở thích:</strong> Chơi game, ngủ</p>
+        <p><strong>Quê quán:</strong> Bảo Lộc</p>
+        <p><strong>Tình trạng mối quan hệ:</strong> Độc thân</p>
+      </div>
+    </div>
+
+    <div id="games" class="tab-content">
+      <div class="games">
+        <h2>Game</h2>
+        <div class="game-list">
+          <div class="game">
+            <img src="xemgame-logo-lien-quan-mobile-garena.jpg" alt="Liên Quân Mobile" />
+            <div class="game-name">Liên Quân Mobile</div>
+            <div class="ingame">Ingame: _FurinSeina.Ϟ</div>
+          </div>
+          <div class="game">
+            <img src="communityIcon_moukkgmt1rca1.png" alt="Genshin Impact" />
+            <div class="game-name">Genshin Impact</div>
+            <div class="ingame">UID: 842578123</div>
+          </div>
         </div>
-        <div class="game">
-          <img src="communityIcon_moukkgmt1rca1.png" alt="Genshin Impact" />
-          <div class="game-name">Genshin Impact</div>
-          <div class="ingame"> UID: 842578123</div>
+      </div>
+    </div>
+
+    <div id="banks" class="tab-content">
+      <div class="banks">
+        <h2>Thông tin ngân hàng</h2>
+        <div class="bank-list">
+          <div class="bank">
+            <img class="bank-logo" src="logo-vietcombank-vector-11.png" alt="Vietcombank" />
+            <div class="bank-name">Vietcombank</div>
+            <div class="bank-info">Chủ TK: Hoàng Kim Duy An</div>
+            <div class="bank-info">Số tài khoản: 1036446932</div>
+          </div>
+          <div class="bank">
+            <img class="bank-logo" src="Bieu-Tuong-Logo-Ngan-Hang-Techcombank.png" alt="Techcombank" />
+            <div class="bank-name">Techcombank</div>
+            <div class="bank-info">Chủ TK: Hoàng Kim Duy An</div>
+            <div class="bank-info">Số tài khoản: 1507200631</div>
+          </div>
         </div>
       </div>
     </div>
   </div>
+
+  <script>
+    function showTab(tabName) {
+      const tabs = document.querySelectorAll('.tab-content');
+      tabs.forEach(tab => tab.classList.remove('active-tab'));
+
+      document.getElementById(tabName).classList.add('active-tab');
+
+      const buttons = document.querySelectorAll('.tab-button');
+      buttons.forEach(btn => btn.classList.remove('active'));
+
+      const activeBtn = document.querySelector(`.tab-button[onclick="showTab('${tabName}')"]`);
+      activeBtn.classList.add('active');
+    }
   </script>
 </body>
 </html>
