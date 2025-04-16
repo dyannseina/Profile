@@ -34,7 +34,6 @@
       padding: 80px 20px 40px;
     }
 
-    /* Avatar viền động */
     .avatar {
       width: 130px;
       height: 130px;
@@ -99,7 +98,6 @@
       transform: scale(1.1);
     }
 
-    /* Hiệu ứng phát sáng theo từng nền tảng */
     .socials a.facebook:hover img {
       filter: drop-shadow(0 0 10px #1877f2) drop-shadow(0 0 20px #1877f2);
     }
@@ -163,7 +161,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Game + Bank styling */
     .game img, .bank-logo {
       width: 80px;
       height: 80px;
@@ -231,7 +228,35 @@
       margin: 0 auto;
     }
 
-    /* Responsive */
+    .qr-code {
+      margin-top: 15px;
+      display: none;
+    }
+
+    .qr-code img {
+      width: 160px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+    }
+
+    .qr-button {
+      margin-top: 10px;
+      padding: 6px 15px;
+      background: #00f0ff;
+      color: black;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .qr-button:hover {
+      background: white;
+      color: #000;
+      box-shadow: 0 0 10px #00f0ff;
+    }
+
     @media (max-width: 480px) {
       .avatar {
         width: 100px;
@@ -319,16 +344,24 @@
         <h2>Thông tin ngân hàng</h2>
         <div class="bank-list">
           <div class="bank">
-            <img class="bank-logo" src="Viet.jpg" alt="Vietcombank" />
+            <img class="bank-logo" src="logo-vietcombank-vector-11.png" alt="Vietcombank" />
             <div class="bank-name">Vietcombank</div>
             <div class="bank-info">Chủ TK: Hoàng Kim Duy An</div>
             <div class="bank-info">Số tài khoản: 1036446932</div>
+            <button onclick="showQR('vcb-qr')" class="qr-button">QR</button>
+            <div class="qr-code" id="vcb-qr">
+              <img src="Viet.jpg" alt="QR Vietcombank" />
+            </div>
           </div>
           <div class="bank">
-            <img class="bank-logo" src="Tech.jpg" alt="Techcombank" />
+            <img class="bank-logo" src="Bieu-Tuong-Logo-Ngan-Hang-Techcombank.png" alt="Techcombank" />
             <div class="bank-name">Techcombank</div>
             <div class="bank-info">Chủ TK: Hoàng Kim Duy An</div>
             <div class="bank-info">Số tài khoản: 1507200631</div>
+            <button onclick="showQR('tcb-qr')" class="qr-button">QR</button>
+            <div class="qr-code" id="tcb-qr">
+              <img src="Tech.jpg" alt="QR Techcombank" />
+            </div>
           </div>
         </div>
       </div>
@@ -347,6 +380,19 @@
 
       const activeBtn = document.querySelector(`.tab-button[onclick="showTab('${tabName}')"]`);
       activeBtn.classList.add('active');
+    }
+
+    function showQR(id) {
+      const qr = document.getElementById(id);
+      const isVisible = qr.style.display === 'block';
+
+      // Ẩn tất cả QR trước
+      document.querySelectorAll('.qr-code').forEach(el => el.style.display = 'none');
+
+      // Nếu chưa hiển thị thì mới hiện lên
+      if (!isVisible) {
+        qr.style.display = 'block';
+      }
     }
   </script>
 </body>
