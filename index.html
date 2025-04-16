@@ -16,22 +16,15 @@
       font-family: 'Segoe UI', sans-serif;
       color: white;
       overflow-x: hidden;
-    }
-
-    .background {
       background: url('jj.gif') no-repeat center center fixed;
       background-size: cover;
-      position: fixed;
-      height: 100%;
-      width: 100%;
-      z-index: -1;
-      transition: background-image 0.5s ease;
     }
 
     .container {
       position: relative;
       text-align: center;
       padding: 80px 20px 40px;
+      z-index: 1;
     }
 
     .avatar {
@@ -40,33 +33,27 @@
       border-radius: 50%;
       object-fit: cover;
       margin-bottom: 20px;
-      position: relative;
-      z-index: 1;
-      animation: pulseGlow 2.5s infinite;
       border: 4px solid transparent;
       background-image: linear-gradient(white, white), 
                         linear-gradient(120deg, #00f0ff, #ff00ff, #00f0ff);
       background-origin: border-box;
       background-clip: content-box, border-box;
+      animation: pulseGlow 3s infinite;
     }
 
     @keyframes pulseGlow {
-      0% {
-        box-shadow: 0 0 10px #00f0ff, 0 0 20px #ff00ff;
-      }
-      50% {
-        box-shadow: 0 0 25px #ff00ff, 0 0 35px #00f0ff;
-      }
-      100% {
-        box-shadow: 0 0 10px #00f0ff, 0 0 20px #ff00ff;
-      }
+      0% { box-shadow: 0 0 10px #00f0ff, 0 0 20px #ff00ff; }
+      50% { box-shadow: 0 0 30px #ff00ff, 0 0 40px #00f0ff; }
+      100% { box-shadow: 0 0 10px #00f0ff, 0 0 20px #ff00ff; }
     }
 
     h1 {
-      font-size: 2.2rem;
+      font-size: 2.5rem;
       margin-bottom: 10px;
-      color: #fff;
-      text-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff;
+      background: linear-gradient(90deg, #00f0ff, #ff00ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 15px rgba(255, 0, 255, 0.4);
     }
 
     .location {
@@ -85,7 +72,7 @@
       justify-content: center;
       flex-wrap: wrap;
       gap: 15px;
-      margin-bottom: 40px;
+      margin: 20px 0 40px;
     }
 
     .socials a img.social-icon {
@@ -94,28 +81,8 @@
       transition: 0.4s ease;
     }
 
-    .socials a img.social-icon:hover {
-      transform: scale(1.1);
-    }
-
-    .socials a.facebook:hover img {
-      filter: drop-shadow(0 0 10px #1877f2) drop-shadow(0 0 20px #1877f2);
-    }
-
-    .socials a.instagram:hover img {
-      filter: drop-shadow(0 0 10px #e1306c) drop-shadow(0 0 20px #e1306c);
-    }
-
-    .socials a.tiktok:hover img {
-      filter: drop-shadow(0 0 10px #69c9d0) drop-shadow(0 0 20px #ee1d52);
-    }
-
-    .socials a.github:hover img {
-      filter: drop-shadow(0 0 10px #ffffff) drop-shadow(0 0 20px #999999);
-    }
-
-    .socials a.youtube:hover img {
-      filter: drop-shadow(0 0 10px #ff0000) drop-shadow(0 0 20px #ff0000);
+    .socials a:hover img {
+      transform: scale(1.15);
     }
 
     .tabs {
@@ -131,7 +98,7 @@
       cursor: pointer;
       background: rgba(255, 255, 255, 0.1);
       border: 2px solid white;
-      border-radius: 10px;
+      border-radius: 999px;
       color: white;
       transition: 0.3s;
     }
@@ -149,16 +116,20 @@
 
     .tab-content {
       display: none;
-      animation: fadeIn 0.5s ease;
+      animation: fadeInTab 0.6s ease forwards;
+      opacity: 0;
+      transform: translateY(30px);
     }
 
     .active-tab {
       display: block;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    @keyframes fadeInTab {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .game img, .bank-logo {
@@ -215,7 +186,7 @@
 
     .personal h2 {
       font-size: 2rem;
-      text-shadow: 0 0 10px #ff70c9, 0 0 20px #ff70c9, 0 0 30px #ff70c9;
+      text-shadow: 0 0 10px #ff70c9, 0 0 20px #ff70c9;
       margin-bottom: 20px;
     }
 
@@ -231,6 +202,12 @@
     .qr-code {
       margin-top: 15px;
       display: none;
+      animation: fadeInQR 0.4s ease;
+    }
+
+    @keyframes fadeInQR {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
     }
 
     .qr-code img {
@@ -279,27 +256,26 @@
   </style>
 </head>
 <body>
-  <div class="background" id="bg"></div>
   <div class="container">
     <img src="download.gif" alt="Avatar" class="avatar" />
     <h1>Hoàng Kim Duy An</h1>
     <div class="location">Hiện đang ở Hồ Chí Minh City</div>
-    <p>Mình là An(Seina), đến từ Bảo Lộc. Mình là người gốc Bắc nên có chửi nhiều=))</p>
+    <p>Mình là An (Seina), đến từ Bảo Lộc. Mình là người gốc Bắc nên có chửi nhiều =))</p>
 
     <div class="socials">
-      <a href="https://facebook.com/dyann.seina26" target="_blank" class="facebook">
+      <a href="https://facebook.com/dyann.seina26" target="_blank">
         <img class="social-icon" src="https://cdn-icons-png.flaticon.com/512/145/145802.png" alt="Facebook" />
       </a>
-      <a href="https://instagram.com/flw_.seina" target="_blank" class="instagram">
+      <a href="https://instagram.com/flw_.seina" target="_blank">
         <img class="social-icon" src="snapedit_1744741807916.png" alt="Instagram" />
       </a>
-      <a href="https://tiktok.com/@seina.8192" target="_blank" class="tiktok">
+      <a href="https://tiktok.com/@seina.8192" target="_blank">
         <img class="social-icon" src="https://cdn-icons-png.flaticon.com/512/3046/3046122.png" alt="TikTok" />
       </a>
-      <a href="https://github.com/dyannseina" target="_blank" class="github">
+      <a href="https://github.com/dyannseina" target="_blank">
         <img class="social-icon" src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub" />
       </a>
-      <a href="https://youtube.com/@Sayu2313" target="_blank" class="youtube">
+      <a href="https://youtube.com/@Sayu2313" target="_blank">
         <img class="social-icon" src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube" />
       </a>
     </div>
@@ -317,7 +293,7 @@
         <p><strong>Sinh nhật:</strong> 15/07/2006</p>
         <p><strong>Sở thích:</strong> Chơi game, ngủ</p>
         <p><strong>Quê quán:</strong> Hà Nam, Việt Nam</p>
-        <p><strong>Tình trạng mối quan hệ:</strong> Đang hẹn hò với Trần Mỹ Huyền</p>
+        <p><strong>Tình trạng:</strong> Đang hẹn hò với Trần Mỹ Huyền</p>
       </div>
     </div>
 
@@ -370,13 +346,15 @@
 
   <script>
     function showTab(tabName) {
-      const tabs = document.querySelectorAll('.tab-content');
-      tabs.forEach(tab => tab.classList.remove('active-tab'));
+      document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.classList.remove('active-tab');
+      });
 
       document.getElementById(tabName).classList.add('active-tab');
 
-      const buttons = document.querySelectorAll('.tab-button');
-      buttons.forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-button').forEach(btn => {
+        btn.classList.remove('active');
+      });
 
       const activeBtn = document.querySelector(`.tab-button[onclick="showTab('${tabName}')"]`);
       activeBtn.classList.add('active');
@@ -386,10 +364,10 @@
       const qr = document.getElementById(id);
       const isVisible = qr.style.display === 'block';
 
-      // Ẩn tất cả QR trước
-      document.querySelectorAll('.qr-code').forEach(el => el.style.display = 'none');
+      document.querySelectorAll('.qr-code').forEach(el => {
+        el.style.display = 'none';
+      });
 
-      // Nếu chưa hiển thị thì mới hiện lên
       if (!isVisible) {
         qr.style.display = 'block';
       }
